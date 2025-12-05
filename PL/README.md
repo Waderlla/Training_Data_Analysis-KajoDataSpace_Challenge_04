@@ -2,7 +2,7 @@
 
 ## 1. Cel projektu
 
-Celem tego projektu jest analiza danych z osobistego dziennika aktywności zebranych w ramach **KajoDataSpace Challenge #04** oraz stworzenie interaktywnego dashboardu prezentującego:
+Celem tego projektu jest analiza danych z dziennika aktywności udostępnionego przez **Kaja Rudzińskiego** w ramach **KajoDataSpace Challenge #04** oraz stworzenie interaktywnego dashboardu prezentującego:
 
 - ogólną aktywność,
 - rozwój siły,
