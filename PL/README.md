@@ -50,7 +50,7 @@ Wszystkie pliki `.csv` to oczyszczone zestawy danych przygotowane w Power Query.
 ## 4. Czyszczenie i przygotowanie danych
 
 Pełna dokumentacja dostępna jest w:  
-📄 **opis_oczyszczania_danych.md**
+📄 **[opis_oczyszczania_danych.md](PL/opis_oczyszczania_danych.md)**
 
 Najważniejsze kroki:
 
