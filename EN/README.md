@@ -2,7 +2,7 @@
 
 ## 1. Project Goal
 
-The purpose of this project is to analyze data from a personal activity tracker collected as part of **KajoDataSpace Challenge #04**, and to build an interactive dashboard presenting:
+The goal of this project is to analyze the activity log shared by **Kajo Rudziński** as part of the **KajoDataSpace Challenge #04** and to create an interactive dashboard presenting:
 
 - overall activity,
 - strength development,
