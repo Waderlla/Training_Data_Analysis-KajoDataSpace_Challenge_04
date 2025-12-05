@@ -15,7 +15,7 @@ Celem procesu było:
 
 ---
 
-## 2. Tabela **Sztanga**
+## 2. Tabela **sztanga**
 
 ### Wykonane kroki:
 1. Załadowanie danych oraz nadanie nagłówków.
@@ -29,7 +29,7 @@ Celem procesu było:
 
 ---
 
-## 3. Tabela **Orbitrek**
+## 3. Tabela **orbitrek**
 
 ### Wykonane kroki:
 1. Załadowanie danych oraz nadanie nagłówków.
@@ -43,7 +43,7 @@ Celem procesu było:
 
 ---
 
-## 4. Tabela **Max Pull Up**
+## 4. Tabela **max_pull_up**
 
 ### Wykonane kroki:
 1. Załadowanie danych oraz nadanie nagłówków.
@@ -54,7 +54,7 @@ Celem procesu było:
 
 ---
 
-## 5. Tabela **Ćwiczenia ogólne**
+## 5. Tabela **cwiczenia_ogolne**
 
 ### Wykonane kroki:
 1. Załadowanie danych, nadanie nagłówków.
@@ -68,7 +68,7 @@ Celem procesu było:
 
 ---
 
-## 6. Tabela **Małe ćwiczenia**
+## 6. Tabela **male_cwiczenia**
 
 *(Jeśli stosowana analogicznie — zapis uwzględnia standardowy proces)*  
 1. Nadanie nagłówków, konwersja typów.  
@@ -76,7 +76,7 @@ Celem procesu było:
 
 ---
 
-## 7. Tabela **Waga i obwód**
+## 7. Tabela **waga_i_obwod**
 
 1. Uporządkowanie nagłówków.
 2. Konwersja daty oraz wszystkich obwodów do typów liczbowych.
