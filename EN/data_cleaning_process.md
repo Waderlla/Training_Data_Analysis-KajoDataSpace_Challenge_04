@@ -5,12 +5,12 @@ This document describes the full data‑cleaning pipeline applied to all trainin
 
 ## 1. Source Files
 The following raw files were imported into Power Query:
-- **Małe ćwiczenia.csv**
-- **Waga i obwód.csv**
-- **Sztanga.csv**
-- **Orbitrek.csv**
-- **Max Pull Up.csv**
-- **Ćwiczenia ogólne.csv**
+- **assistance_exercises.csv**
+- **weight_and_measurements.csv**
+- **barbell.csv**
+- **elliptical.csv**
+- **max_pull_up.csv**
+- **general_exercises.csv**
 - **mapping_cwiczenia_miesnie.csv** (manually created mapping table)
 
 Each file required different cleaning steps depending on structure and quality.
@@ -32,7 +32,7 @@ These steps ensured that all queries could be combined later using consistent sc
 
 ## 3. Dataset‑Specific Cleaning
 
-### 3.1 **Sztanga** (Barbell training)
+### 3.1 **Barbell training**
 More complex due to comments and multiple custom fields.
 
 **Steps:**
@@ -55,7 +55,7 @@ More complex due to comments and multiple custom fields.
 
 ---
 
-### 3.2 **Orbitrek** (Elliptical training)
+### 3.2 **Elliptical training**
 
 **Steps:**
 1. Promote headers and set types.
@@ -77,7 +77,7 @@ The simplest dataset.
 
 ---
 
-### 3.4 **Ćwiczenia ogólne** (General strength/cardio)
+### 3.4 **General strength/cardio**
 
 **Steps:**
 1. Promote headers.
@@ -88,7 +88,7 @@ The simplest dataset.
 
 ---
 
-### 3.5 **Waga i obwód**
+### 3.5 **Weight and measurements**
 Imported via Power Query, and afterwards a **new column was added manually in Excel**:
 - `wzrost` (height), needed for downstream metrics such as BMI.
 
