@@ -17,7 +17,7 @@ Dashboard został stworzony w **Tableau Public**, a wszystkie dane wejściowe zo
 ## 2. Link do dashboardu
 
 Publiczny dashboard:  
-👉 https://public.tableau.com/views/AnalizaAktywnociFizycznejiZdrowia/Przegldroku
+👉 [https://public.tableau.com/views/AnalizaAktywnociFizycznejiZdrowia/Przegldroku](https://olgamironczuk.my.canva.site/home/#konkurs-kajodataspace)
 
 ---
 
