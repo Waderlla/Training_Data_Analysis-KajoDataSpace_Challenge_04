@@ -1,115 +1,127 @@
-# Proces przygotowania i oczyszczania danych
+# Opis procesu oczyszczania danych
 
-Poniżej znajduje się kompletny opis procesu oczyszczania danych zastosowanego we wszystkich tabelach użytych w projekcie fitness‑dashboard.
-
----
-
-## 1. Ogólny cel przygotowania danych
-
-Celem procesu było:
-- ujednolicenie nazewnictwa kolumn i wartości,
-- konwersja typów danych do prawidłowych formatów (daty, liczby, czas),
-- dodanie pól pomocniczych niezbędnych do wizualizacji (np. `czas` jako typ *time*),
-- stworzenie słownika mapującego każde ćwiczenie na główną partię mięśniową,
-- przygotowanie jednolitego schematu danych umożliwiającego dalsze łączenie w Tableau.
+## 1. Przegląd
+Ten dokument opisuje pełny proces oczyszczania danych zastosowany do wszystkich zestawów danych treningowych użytych w dashboardzie. Celem było stworzenie spójnych, gotowych do analizy tabel we wszystkich źródłach, przy jednoczesnym zachowaniu szczegółowych informacji o treningach.
 
 ---
 
-## 2. Tabela **sztanga**
+## 2. Pliki źródłowe
+Do Power Query zostały zaimportowane następujące pliki:
 
-### Wykonane kroki:
-1. Załadowanie danych oraz nadanie nagłówków.
-2. Konwersja typów:
-   - `Dzień` → *date*  
-   - wartości liczbowe (`powtorzenia`, `serie`, `waga_kg`) → *whole number*
-3. Usunięcie pustych wierszy i zbędnych kolumn.
-4. Ujednolicenie nazw kolumn (`cwiczenie`, `waga_kg`, `czas_miedzy_seriami`).
-5. Dodanie obliczonej kolumny `partia_glowna` — reguły przypisujące każdą nazwę ćwiczenia do partii mięśniowej.
-6. Ostateczne uporządkowanie typów danych.
+- **male_cwiczenia.csv**  
+- **waga_i_obwod.csv**  
+- **sztanga.csv**  
+- **orbitrek.csv**  
+- **max_pull_up.csv**  
+- **cwiczenia_ogolne.csv**  
+- **mapping_cwiczenia_miesnie.csv** *(ręcznie stworzona tabela mapowania)*
 
----
-
-## 3. Tabela **orbitrek**
-
-### Wykonane kroki:
-1. Załadowanie danych oraz nadanie nagłówków.
-2. Zmiana nazw kolumn (`dzien`, `minuty`, `kalorie`).
-3. Konwersja typów:  
-   - `dzien` → *date*,  
-   - `minuty`, `kalorie` → *whole number*.
-4. Dodanie kolumny pomocniczej:  
-   - `czas = minuty/1440` jako liczba dni (wymóg Power Query).
-5. Konwersja `czas` do typu *time* dla prawidłowego eksportu do Tableau.
+Każdy plik wymagał nieco innego zakresu czyszczenia w zależności od struktury i jakości danych.
 
 ---
 
-## 4. Tabela **max_pull_up**
+## 3. Ogólne zasady oczyszczania danych
+We wszystkich zestawach danych zastosowano te same podstawowe kroki:
 
-### Wykonane kroki:
-1. Załadowanie danych oraz nadanie nagłówków.
-2. Konwersja typów:  
-   - `Dzień` → *date*,  
-   - `Max Pull Up` → *whole number*.
-3. Zmiana nazw kolumn na `dzien` oraz `max_pull_up` dla spójności.
+- usunięcie pustych wierszy,
+- podniesienie pierwszego wiersza do nagłówków,
+- ustawienie odpowiednich typów danych (data, tekst, liczby, czas),
+- ujednolicenie nazw kolumn do formatu snake_case,
+- usunięcie niepotrzebnych lub automatycznie wygenerowanych kolumn (np. `_1`, `_2`),
+- usunięcie zbędnych spacji i korekta drobnych niespójności tekstowych.
 
----
-
-## 5. Tabela **cwiczenia_ogolne**
-
-### Wykonane kroki:
-1. Załadowanie danych, nadanie nagłówków.
-2. Konwersja typów:  
-   - `Dzień` → *date*,  
-   - `Minuty` → *whole number*,  
-   - `Rodzaj ćwiczenia` → *text*.
-3. Ujednolicenie nazw kolumn (`dzien`, `cwiczenie`, `minuty`).
-4. Dodanie kolumny `czas = minuty / 1440`.
-5. Konwersja `czas` do typu *time*.
+Dzięki temu możliwe było późniejsze łączenie tabel zgodnie z jedną wspólną strukturą.
 
 ---
 
-## 6. Tabela **male_cwiczenia**
+## 4. Czyszczenie poszczególnych plików
 
-*(Jeśli stosowana analogicznie — zapis uwzględnia standardowy proces)*  
-1. Nadanie nagłówków, konwersja typów.  
-2. Wyczyszczenie wartości tekstowych.  
+### 4.1 **sztanga.csv**
+Najbardziej złożony plik ze względu na komentarze i dodatkowe ręczne pola.
 
----
+**Kroki:**
 
-## 7. Tabela **waga_i_obwod**
-
-1. Uporządkowanie nagłówków.
-2. Konwersja daty oraz wszystkich obwodów do typów liczbowych.
-3. Usunięcie pustych rekordów.
-
----
-
-## 8. Tabela **mapping_cwiczenia_miesnie**
-
-(Słownik stworzony ręcznie)
-
-- Zawiera dwie kolumny: `cwiczenie` oraz `miesien`.
-- Każde ćwiczenie przypisane do konkretnej partii głównej.
-- Wczytane i użyte bez modyfikacji (jedynie nagłówki + typy).
-
----
-
-## 9. Spójność schematu danych
-
-Wszystkie tabele końcowe mają:
-- kolumny o spójnych nazwach (`dzien`, `cwiczenie`, `minuty`, `czas`, `waga_kg`, `serie`, `powtorzenia`, `kalorie`, `max_pull_up`),
-- prawidłowe typy danych,
-- przygotowane pola niezbędne do obliczeń i KPI w Tableau.
-
-Plik jest gotowy do połączenia na poziomie daty lub ćwiczenia oraz do użycia w dashboardzie.
+1. Podniesienie pierwszego wiersza do nagłówków.  
+2. Ustawienie typów danych dla wszystkich kolumn.  
+3. Usunięcie pustych wierszy i automatycznie wygenerowanych kolumn.  
+4. Ujednolicenie nazw kolumn, np.:  
+   - `Dzień` → `dzien`  
+   - `Ćwiczenie` → `cwiczenie`  
+   - `Powtórzenia` → `powtorzenia`  
+   - `Serie` → `serie`  
+   - `Waga (kg)` → `waga_kg`  
+5. Wyciągnięcie strukturalnych informacji z komentarzy:  
+   - `ocena_ciezaru` – czy ciężar był odpowiedni,  
+   - `blisko_upadku` – czy seria była blisko upadku mięśniowego,  
+   - `odczucia_miesniowe` – czy pojawiły się odczucia mięśniowe.  
+6. Konwersja powyższych pól na typ liczbowy (0/1).  
+7. Dodanie kolumny `partia_glowna` poprzez mapowanie ćwiczenia do partii mięśniowej.
 
 ---
 
-## 10. Rezultat końcowy
+### 4.2 **orbitrek.csv**
+Prosty plik z danymi cardio.
 
-Proces oczyszczania umożliwia:
-- bezbłędne łączenie danych z różnych źródeł,
-- poprawne działanie filtrów i obliczeń w Tableau,
-- pełną automatyzację odświeżania danych,
-- czytelność i jednoznaczność w raportowaniu.
+**Kroki:**
 
+1. Podniesienie nagłówków.  
+2. Ustawienie typów (data, liczby).  
+3. Ujednolicenie kolumn: `dzien`, `minuty`, `kalorie`.  
+4. Dodanie kolumny `czas` → przeliczenie minut na format czasu.  
+5. Konwersja `czas` na typ *time*.
+
+---
+
+### 4.3 **max_pull_up.csv**
+
+**Kroki:**
+
+1. Podniesienie nagłówków.  
+2. Ustawienie typów danych:  
+   - `Dzień` jako data,  
+   - `Max Pull Up` jako liczba.  
+3. Zmiana nazw kolumn: `dzien`, `max_pull_up`.
+
+---
+
+### 4.4 **cwiczenia_ogolne.csv**
+Ćwiczenia mieszane, siłowe i cardio.
+
+**Kroki:**
+
+1. Podniesienie nagłówków.  
+2. Ustawienie typów danych.  
+3. Ujednolicenie nazw kolumn: `dzien`, `cwiczenie`, `minuty`.  
+4. Dodanie `czas` → konwersja minut na format czasu.  
+5. Konwersja na typ *time*.
+
+---
+
+### 4.5 **waga_i_obwod.csv**
+
+**Kroki:**
+
+1. Import do Power Query.  
+2. Po imporcie **ręcznie dodano w Excelu kolumnę `wzrost`**, potrzebną np. do liczenia BMI.
+
+---
+
+### 4.6 **mapping_cwiczenia_miesnie.csv**
+Tabela ręczna, służąca do przypisania ćwiczeń do partii mięśniowych.
+
+**Kroki:**
+
+1. Podniesienie nagłówków.  
+2. Ustawienie typu tekstowego dla obu kolumn.
+
+---
+
+## 5. Wynik końcowy
+Po oczyszczeniu wszystkie pliki:
+
+- mają spójne nazwy kolumn,
+- poprawne typy danych,
+- dodatkowe kolumny wyprowadzone z komentarzy,
+- jednolite mapowanie ćwiczeń do głównych partii mięśniowych.
+
+Dane są gotowe do dalszego modelowania, tworzenia KPI i budowy dashboardu.
