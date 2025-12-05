@@ -142,13 +142,12 @@ Key analytical findings presented in bullet points, focusing on progress, regula
 
 ## 7. Screenshots
 
-Add your images here:
 
 ```
-![Dashboard – Page 1](screenshots/1.png)
-![Dashboard – Page 2](screenshots/2.png)
-![Dashboard – Page 3](screenshots/3.png)
-![Dashboard – Page 4](screenshots/4.png)
+![Dashboard – Page 1](EN/screenshot/1.png)
+![Dashboard – Page 2](EN/screenshot/2.png)
+![Dashboard – Page 3](EN/screenshot/3.png)
+![Dashboard – Page 4]EN/screenshot/4.png)
 ```
 
 ---
