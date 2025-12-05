@@ -50,7 +50,7 @@ All `.csv` files are cleaned datasets prepared in Power Query.
 ## 4. Data Cleaning & Preparation
 
 Full documentation is available in:  
-📄 **opis_oczyszczania_danych.md**
+📄 **[data_cleaning_process.md](data_cleaning_process.md)**
 
 Key steps:
 
